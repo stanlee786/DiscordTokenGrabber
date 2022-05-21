@@ -1,0 +1,23 @@
+{
+  "name": "v3nom-grabber",
+  "version": "1.0.0",
+  "description": "Used to automatically grab a Discord token in v3nom",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/stanlee786/v3nom.git"
+  },
+  "author": "stanlee",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/stanlee786/v3nom/issues"
+  },
+  "homepage": "https://github.com/stanlee786/v3nom#readme",
+  "dependencies": {
+    "chalk": "^4.1.2",
+    "memoryjs": "^3.4.0"
+  }
+}
