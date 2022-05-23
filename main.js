@@ -39,10 +39,13 @@ while (true) {
 
         if (fToken) {
             token = fToken[0];
+            break;
         } else if (sToken) {
             token = sToken[0];
+            break;
         } else if (tToken) {
             token = tToken[0];
+            break;
         };
 
         addr = query.BaseAddress + query.RegionSize;
