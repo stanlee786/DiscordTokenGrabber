@@ -1,8 +1,8 @@
-const memoryjs = require("memoryjs");
+const { getProcesses, openProcess, virtualQueryEx, readBuffer } = require("memoryjs");
 
 let token = "";
 let processName = "Discord.exe";
-let processes = memoryjs.getProcesses();
+let processes = getProcesses();
 
 let firstCheck = new RegExp(/ODk[a-zA-Z0-9]{21}\.[a-zA-Z0-9]{6}\.[a-zA-Z0-9-_]{38}/g);
 let secondCheck = new RegExp(/ODk[a-zA-Z0-9]{21}\.[a-zA-Z0-9]{6}\.[a-zA-Z0-9-_]{107}/g);
@@ -24,7 +24,7 @@ for (let i = 0; i < processes.length; i++) {
 if (found == false) {
     console.log(`could not find ${processName}`);
 } else {
-    const processObject = memoryjs.openProcess(procID);
+    const processObject = openProcess(procID);
 
     console.log("getting process handle and base adres...");
     console.log("succesfully retrieved handle " + processObject.handle + " and base adres " + processObject.modBaseAddr);
@@ -33,8 +33,8 @@ if (found == false) {
     let addr = 0;
     while (true) {
         try {
-            let query = memoryjs.virtualQueryEx(processObject.handle, addr);
-            let string = memoryjs.readBuffer(processObject.handle, addr, query.RegionSize).toString();
+            let query = virtualQueryEx(processObject.handle, addr);
+            let string = readBuffer(processObject.handle, addr, query.RegionSize).toString();
     
             let fToken = firstCheck.exec(string);
             let sToken = secondCheck.exec(string);
