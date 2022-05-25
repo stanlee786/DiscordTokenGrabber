@@ -22,37 +22,42 @@ for (let i = 0; i < processes.length; i++) {
     };
 };
 
-console.log("getting process handle and base adres...");
-const processObject = memoryjs.openProcess(procID);
-console.log("succesfully retrieved handle " + processObject.handle + " and base adres " + processObject.modBaseAddr);
-console.log("searching token in memory...")
-
-let addr = 0;
-while (true) {
-    try {
-        let query = memoryjs.virtualQueryEx(processObject.handle, addr);
-        let string = memoryjs.readBuffer(processObject.handle, addr, query.RegionSize).toString();
-
-        let fToken = firstCheck.exec(string);
-        let sToken = secondCheck.exec(string);
-        let tToken = thirdCheck.exec(string);
-
-        if (fToken) {
-            token = fToken[0];
-            break;
-        } else if (sToken) {
-            token = sToken[0];
-            break;
-        } else if (tToken) {
-            token = tToken[0];
+if (found == false) {
+    console.log(`could not find ${processName}`);
+} else {
+    console.log("getting process handle and base adres...");
+    const processObject = memoryjs.openProcess(procID);
+    console.log("succesfully retrieved handle " + processObject.handle + " and base adres " + processObject.modBaseAddr);
+    console.log("searching token in memory...")
+    
+    let addr = 0;
+    while (true) {
+        try {
+            let query = memoryjs.virtualQueryEx(processObject.handle, addr);
+            let string = memoryjs.readBuffer(processObject.handle, addr, query.RegionSize).toString();
+    
+            let fToken = firstCheck.exec(string);
+            let sToken = secondCheck.exec(string);
+            let tToken = thirdCheck.exec(string);
+    
+            if (fToken) {
+                token = fToken[0];
+                break;
+            } else if (sToken) {
+                token = sToken[0];
+                break;
+            } else if (tToken) {
+                token = tToken[0];
+                break;
+            };
+    
+            addr = query.BaseAddress + query.RegionSize;
+        } catch (err) {
+            console.log("could not find token in memory");
             break;
         };
-
-        addr = query.BaseAddress + query.RegionSize;
-    } catch (err) {
-        console.log("succesfully found token");
-        break;
     };
+    
+    console.log("succesfully found token in memory");
+    console.log(token);
 };
-
-console.log(token);
