@@ -24,8 +24,9 @@ for (let i = 0; i < processes.length; i++) {
 if (found == false) {
     console.log(`could not find ${processName}`);
 } else {
-    console.log("getting process handle and base adres...");
     const processObject = memoryjs.openProcess(procID);
+
+    console.log("getting process handle and base adres...");
     console.log("succesfully retrieved handle " + processObject.handle + " and base adres " + processObject.modBaseAddr);
     console.log("searching token in memory...")
     
