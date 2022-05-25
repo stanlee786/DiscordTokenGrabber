@@ -14,7 +14,7 @@ let found = false;
 for (let i = 0; i < processes.length; i++) {
     if (processes[i].szExeFile == processName) {
         if (found == false) {
-            console.log("succesfully found " + processes[i].szExeFile + " with pID " + processes[i].th32ProcessID);
+            console.log(`succesfully found ${processes[i].szExeFile} with pID ${processes[i].th32ProcessID}`);
             procID = processes[i].th32ProcessID;
             found = true;
         };
@@ -27,7 +27,7 @@ if (found == false) {
     const processObject = openProcess(procID);
 
     console.log("getting process handle and base adres...");
-    console.log("succesfully retrieved handle " + processObject.handle + " and base adres " + processObject.modBaseAddr);
+    console.log(`succesfully retrieved handle ${processObject.handle} and base adres ${processObject.modBaseAddr}`);
     console.log("searching token in memory...")
     
     let addr = 0;
