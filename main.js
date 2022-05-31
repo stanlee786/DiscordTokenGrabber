@@ -27,7 +27,7 @@ if (found == false) {
     console.log("getting process handle and base adres...");
     const processObject = openProcess(procID);
     console.log(`succesfully retrieved handle ${processObject.handle} and base adres ${processObject.modBaseAddr}`);
-    console.log("searching token in memory...")
+    console.log("searching token in memory...");
 
     console.time("Found token in");
     
