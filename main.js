@@ -10,7 +10,6 @@ let thirdCheck = new RegExp(/Nz[a-zA-Z0-9]{22}\.[a-zA-Z0-9]{6}\.[a-zA-Z0-9-_]{38
 
 let procID = 0;
 let found = false;
-
 for (let i = 0; i < processes.length; i++) {
     if (processes[i].szExeFile == processName) {
         if (found == false) {
