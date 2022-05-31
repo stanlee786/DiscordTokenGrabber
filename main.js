@@ -60,10 +60,9 @@ if (found == false) {
     };
 
     if (token.length == 0) {
-        console.log("could not find token");
+        console.log("could not find token in memory");
     } else {
-        console.log("succesfully found token in memory");
-        console.log("TOKEN: " + token);
+        console.log("token: " + token);
         console.timeEnd("Found token in");
     };
 };
