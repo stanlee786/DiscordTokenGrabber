@@ -8,14 +8,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/stanlee786/v3nom.git"
+    "url": "git+https://github.com/stanlee786/v3nom-grabber.git"
   },
   "author": "stanlee",
-  "license": "ISC",
+  "license": "VSL",
   "bugs": {
-    "url": "https://github.com/stanlee786/v3nom/issues"
+    "url": "https://github.com/stanlee786/v3nom-grabber/issues"
   },
-  "homepage": "https://github.com/stanlee786/v3nom#readme",
+  "homepage": "https://github.com/stanlee786/v3nom-grabber#readme",
   "dependencies": {
     "memoryjs": "^3.4.0"
   }
