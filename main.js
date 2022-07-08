@@ -1,6 +1,5 @@
 const { getProcesses, openProcess, virtualQueryEx, readBuffer } = require("memoryjs");
 
-
 // Variables
 let token = "";
 let processName = "Discord.exe";
