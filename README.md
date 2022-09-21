@@ -1,2 +1,2 @@
-# v3nom-grabber
-Searches through the memory of Discord to find the authentication token
+#DiscordTokenGrabber
+A Discord token grabber using memoryJS to search trough the memory of Discord to find the users Authentication Discord.
