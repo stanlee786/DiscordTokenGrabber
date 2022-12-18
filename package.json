@@ -1,17 +1,14 @@
 {
-  "name": "v3nom-grabber",
+  "name": "discord-token-grabber",
   "version": "1.0.0",
-  "description": "Used to automatically grab a Discord token in v3nom",
-  "main": "main.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
+  "description": "Searches through the memory of Discord to find the authentication token ",
+  "main": "index.js",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/stanlee786/v3nom-grabber.git"
   },
-  "author": "stanlee",
-  "license": "VSL",
+  "author": "stanlee786",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/stanlee786/v3nom-grabber/issues"
   },
