@@ -1,20 +1,35 @@
 {
   "name": "discord-token-grabber",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Searches through the memory of Discord to find the authentication token ",
   "main": "index.js",
+  "bin": "src/index.js",
+  "scripts": {
+    "start": "node src/index.js",
+    "build": "pkg --compress Brotli --output dist/output.exe ."
+  },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/stanlee786/v3nom-grabber.git"
+    "url": "git+https://github.com/stanlee786/DiscordTokenGrabber.git"
   },
   "author": "stanlee786",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/stanlee786/v3nom-grabber/issues"
+    "url": "https://github.com/stanlee786/DiscordTokenGrabber/issues"
   },
-  "homepage": "https://github.com/stanlee786/v3nom-grabber#readme",
+  "homepage": "https://github.com/stanlee786/DiscordTokenGrabber#readme",
   "dependencies": {
-    "chalk": "^4.1.2",
     "memoryjs": "^3.5.1"
+  },
+  "devDependencies": {
+    "eslint": "^8.40.0",
+    "pkg": "^5.8.1"
+  },
+  "pkg": {
+    "scripts": "src/*.js",
+    "targets": [
+      "node18-win-x64"
+    ],
+    "outputPath": "dist"
   }
 }
