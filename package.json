@@ -1,12 +1,11 @@
 {
   "name": "discord-token-grabber",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Searches through the memory of Discord to find the authentication token ",
   "main": "index.js",
   "bin": "src/index.js",
   "scripts": {
-    "start": "node src/index.js",
-    "build": "pkg --compress Brotli --output dist/output.exe ."
+    "start": "node src/index.js"
   },
   "repository": {
     "type": "git",
@@ -22,14 +21,6 @@
     "memoryjs": "^3.5.1"
   },
   "devDependencies": {
-    "eslint": "^8.42.0",
-    "pkg": "^5.8.1"
-  },
-  "pkg": {
-    "scripts": "src/*.js",
-    "targets": [
-      "node18-win-x64"
-    ],
-    "outputPath": "dist"
+    "eslint": "^8.53.0"
   }
 }
